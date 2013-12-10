@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.6+'
+    }
+}
+
+apply plugin: 'android-library'
+apply plugin: 'maven'
+
+version '1.0'
+group 'com.android.camera'
+
+
+dependencies {
+   
+}
+
+android {
+    sourceSets {
+        main {
+            manifest.srcFile 'android-cropimage/CropImage/src/main/AndroidManifest.xml'
+            java.srcDirs = ['android-cropimage/CropImage/src/main/java']
+            res.srcDirs = ['android-cropimage/CropImage/src/main/res']
+        }
+    }
+ 
+    compileSdkVersion 19
+    buildToolsVersion "18.1.0"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+    }
+}
+
+android.libraryVariants
+uploadArchives {
+    repositories {
+        mavenDeployer {
+           repository(url: "file://"+System.getProperty("user.home")+"/.m2/repository")
+        }
+    }
+}
